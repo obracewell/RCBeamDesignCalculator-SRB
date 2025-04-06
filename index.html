@@ -246,9 +246,9 @@
             
             let preq;
             let Asreq;
-                Rn = (Mu*12000)/(0.9*beff*d*d);
+                Rn = (Mu*12000)/(0.9*b*d*d);
                 preq = ((0.85*fc)/fy)*(1-sqrt(1-((2*Rn)/(0.85*fc))));
-                Asreq = preq*beff*d;
+                Asreq = preq*b*d;
            
             output += `A<sub>s,req</sub> = ${Asreq.toFixed(2)} in\n\n`;
             
@@ -339,7 +339,7 @@
 `;
               document.getElementById('output').innerHTML = output;
             }
-        let fc, fy, d, bw, beff, hf, Mu, As;
+        let fc, fy, d, b, Mu, As;
         function performCustomCalc() {
             let output = '';
             let errorMessage = '';
