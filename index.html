@@ -225,11 +225,11 @@
         
         function performAnalysis() {
             // Get input values
-            fc = parseFloat(document.getElementById('fc').value);
-            fy = parseFloat(document.getElementById('fy').value);
-            d = parseFloat(document.getElementById('d').value);
-            b = parseFloat(document.getElementById('b').value);
-            Mu = parseFloat(document.getElementById('Mu').value);
+            let fc = parseFloat(document.getElementById('fc').value);
+            let fy = parseFloat(document.getElementById('fy').value);
+            let d = parseFloat(document.getElementById('d').value);
+            let b = parseFloat(document.getElementById('b').value);
+            let Mu = parseFloat(document.getElementById('Mu').value);
 
             
             // Validate inputs
@@ -244,11 +244,9 @@
             
             const sqrt = Math.sqrt;
             
-            let preq;
-            let Asreq;
-                Rn = (Mu*12000)/(0.9*b*d*d);
-                preq = ((0.85*fc)/fy)*(1-sqrt(1-((2*Rn)/(0.85*fc))));
-                Asreq = preq*b*d;
+            let Rn = (Mu*12000)/(0.9*b*d*d);
+            let preq = ((0.85*fc)/fy)*(1-sqrt(1-((2*Rn)/(0.85*fc))));
+            let Asreq = preq*b*d;
            
             output += `A<sub>s,req</sub> = ${Asreq.toFixed(2)} in\n\n`;
             
@@ -307,7 +305,7 @@
 
               // Take all equal, first 8 from greater
               const selectedRows = equal.concat(greater.slice(0, 10))
-                                        .filter(row => row.bmin <= bw);
+                                        .filter(row => row.bmin <= b);
 
               // Build table output
               output += `<table>
@@ -362,8 +360,8 @@
             }
 
             // Check if As exceeds minimum value
-            const Asmin1 = (3 * Math.sqrt(fc) * bw * d) / fy;
-            const Asmin2 = (200 * bw * d) / fy;
+            const Asmin1 = (3 * Math.sqrt(fc) * b * d) / fy;
+            const Asmin2 = (200 * b * d) / fy;
             const Asmin = Math.max(Asmin1, Asmin2);
             
             if (As < Asmin) {
