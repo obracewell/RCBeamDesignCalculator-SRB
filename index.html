@@ -337,16 +337,20 @@
 `;
               document.getElementById('output').innerHTML = output;
             }
-        let fc, fy, d, b, Mu, As;
+        
         function performCustomCalc() {
             let output = '';
             let errorMessage = '';
+            let fc = parseFloat(document.getElementById('fc').value);
+            let fy = parseFloat(document.getElementById('fy').value);
+            let d = parseFloat(document.getElementById('d').value);
+            let b = parseFloat(document.getElementById('b').value);
             let As = parseFloat(document.getElementById('As').value);
             
             // Validate inputs
-            if (isNaN(As)) {
+            if (isNaN(fc) || isNaN(fy) || isNaN(d) || isNaN(b) || isNaN(As)) {
                 alert("Please enter all values.");
-                return;
+            return;
             }
           
             // Assign beta1 value
